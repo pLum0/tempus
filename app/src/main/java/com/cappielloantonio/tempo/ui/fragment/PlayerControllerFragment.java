@@ -745,6 +745,13 @@ public class PlayerControllerFragment extends Fragment {
     }
 
     @Override
+    private void updateSleepTimerIcon() {
+        if (sleepTimerButton != null) {
+            boolean active = Preferences.isSleepTimerActive();
+            sleepTimerButton.setImageResource(active ? R.drawable.ic_sleep_timer_active : R.drawable.ic_sleep_timer);
+        }
+    }
+
     public void onPause() {
         super.onPause();
         if (isServiceBound) {
