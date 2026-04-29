@@ -47,12 +47,12 @@ android {
     productFlavors {
         tempus {
             dimension = "default"
-            applicationId 'com.eddyizm.tempus'
+            applicationId 'com.eddyizm.tempus.sleeptimer'
         }
 
         degoogled {
             dimension = "default"
-            applicationId "com.eddyizm.degoogled.tempus"
+            applicationId "com.eddyizm.degoogled.tempus.sleeptimer"
         }
 
     }

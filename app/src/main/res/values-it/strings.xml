@@ -28,7 +28,7 @@
     <string name="album_page_release_dates_label">Rilasciato il %1$s, originariamente il %2$s</string>
     <string name="album_page_shuffle_button">Riproduzione casuale</string>
     <string name="album_page_tracks_count_and_duration">%1$d brani  •  %2$d minuti</string>
-    <string name="app_name">Tempus</string>
+    <string name="app_name">Tempus Sleep</string>
     <string name="artist_adapter_radio_station_starting">Cercando…</string>
     <string name="artist_bottom_sheet_instant_mix">Mix istantaneo</string>
     <string name="artist_bottom_sheet_shuffle">Riproduzione casuale</string>
@@ -536,4 +536,12 @@
     <string name="settings_album_detail_summary">Se abilitato, mostra i dettagli dell\'album come genere, numero di canzoni, ecc. nella pagina dell\'album</string>
     <string name="settings_artist_sort_by_album_count">Ordina artisti per numero di album</string>
     <string name="settings_artist_sort_by_album_count_summary">Se abilitato, ordina gli artisti per numero di album. Ordina per nome se disabilitato.</string>
+    <string name="sleep_timer_title">Timer di sospensione</string>
+    <string name="sleep_timer_start_button">Avvia</string>
+    <string name="sleep_timer_stop_button">Ferma</string>
+    <string name="sleep_timer_cancel_button">Annulla</string>
+    <string name="sleep_timer_minutes_label">min</string>
+    <string name="sleep_timer_end_of_track">Fine del brano</string>
+    <string name="sleep_timer_end_of_track_active">Timer: si fermerà alla fine del brano corrente</string>
+    <string name="sleep_timer_remaining">Timer: %1$s rimanente</string>
 </resources>

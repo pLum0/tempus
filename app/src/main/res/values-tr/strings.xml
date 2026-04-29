@@ -28,7 +28,7 @@
     <string name="album_page_release_dates_label">%1$s tarihinde yayınlandı, orijinali %2$s</string>
     <string name="album_page_shuffle_button">Karıştır</string>
     <string name="album_page_tracks_count_and_duration">%1$d parça  •  %2$d dakika</string>
-    <string name="app_name">Tempus</string>
+    <string name="app_name">Tempus Sleep</string>
     <string name="artist_adapter_radio_station_starting">Aranıyor…</string>
     <string name="artist_bottom_sheet_instant_mix">Anında karışım</string>
     <string name="artist_bottom_sheet_shuffle">Karıştır</string>
@@ -451,4 +451,12 @@
     <string name="widget_content_desc_prev">Önceki parça</string>
     <string name="settings_song_rating">Şarkının yıldız derecelendirmesini göster</string>
     <string name="settings_sync_starred_albums_for_offline_use_summary">"Etkinleştirildiğinde yıldızlı albümler çevrimdışı kullanım için indirilecek. "</string>
+    <string name="sleep_timer_title">Uyku zamanlayıcısı</string>
+    <string name="sleep_timer_start_button">Başlat</string>
+    <string name="sleep_timer_stop_button">Durdur</string>
+    <string name="sleep_timer_cancel_button">İptal</string>
+    <string name="sleep_timer_minutes_label">dk</string>
+    <string name="sleep_timer_end_of_track">Şarkı sonu</string>
+    <string name="sleep_timer_end_of_track_active">Zamanlayıcı: mevcut şarkının sonunda duracak</string>
+    <string name="sleep_timer_remaining">Zamanlayıcı: %1$s kaldı</string>
 </resources>

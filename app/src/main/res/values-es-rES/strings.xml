@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="album_page_tracks_count_and_duration">%1$d pistas  •  %2$d minutos</string>
-    <string name="app_name">Tempus</string>
+    <string name="app_name">Tempus Sleep</string>
     <string name="aa_starred_tracks">★ Pistas</string>
     <string name="activity_battery_optimizations_conclusion">Si tienes problemas, visita https://dontkillmyapp.com. Ofrece instrucciones detalladas para desactivar características de ahorro de energía que podrían afectar al rendimiento de la app.</string>
     <string name="activity_battery_optimizations_summary">Por favor, desactiva las optimizaciones de batería para continuar la reproducción multimedia mientras la pantalla está apagada.</string>
@@ -573,4 +573,12 @@
     <string name="settings_enable_drawer_on_landscape">Habilitar el menú lateral en modo vertical [Experimental]</string>
     <string name="settings_enable_drawer_on_landscape_summary">Desbloquea el menú lateral horizontal en modo vertical. Los cambios se aplicarán al reiniciar la app.</string>
     <string name="settings_hide_bottom_navbar_on_portrait">Ocultar la barra de navegación inferior en modo vertical [Experimental]</string>
+    <string name="sleep_timer_title">Temporizador de sueño</string>
+    <string name="sleep_timer_start_button">Iniciar</string>
+    <string name="sleep_timer_stop_button">Detener</string>
+    <string name="sleep_timer_cancel_button">Cancelar</string>
+    <string name="sleep_timer_minutes_label">min</string>
+    <string name="sleep_timer_end_of_track">Fin de la canción</string>
+    <string name="sleep_timer_end_of_track_active">Temporizador: se detendrá al final de la canción actual</string>
+    <string name="sleep_timer_remaining">Temporizador: %1$s restante</string>
 </resources>

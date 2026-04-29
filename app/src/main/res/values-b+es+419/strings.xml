@@ -47,7 +47,7 @@
     <string name="album_page_release_dates_label">Lanzado el %1$s, originalmente %2$s</string>
     <string name="album_page_shuffle_button">Aleatorio</string>
     <string name="album_page_tracks_count_and_duration">%1$d canciones  •  %2$d minutos</string>
-    <string name="app_name">Tempus</string>
+    <string name="app_name">Tempus Sleep</string>
     <string name="artist_adapter_radio_station_starting">Buscando…</string>
     <string name="artist_bottom_sheet_instant_mix">Mix instantáneo</string>
     <string name="artist_bottom_sheet_shuffle">Reproducir Aleatoriamente</string>
@@ -622,4 +622,12 @@
     <string name="search_all_songs_play">Reproducir %1$s</string>
 
     <string name="nav_drawer_index">Index</string>
+    <string name="sleep_timer_title">Temporizador de sueño</string>
+    <string name="sleep_timer_start_button">Iniciar</string>
+    <string name="sleep_timer_stop_button">Detener</string>
+    <string name="sleep_timer_cancel_button">Cancelar</string>
+    <string name="sleep_timer_minutes_label">min</string>
+    <string name="sleep_timer_end_of_track">Fin de la canción</string>
+    <string name="sleep_timer_end_of_track_active">Temporizador: se detendrá al final de la canción actual</string>
+    <string name="sleep_timer_remaining">Temporizador: %1$s restante</string>
 </resources>

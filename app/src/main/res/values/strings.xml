@@ -50,7 +50,7 @@
     <string name="album_page_release_dates_label">Released on %1$s, originally %2$s</string>
     <string name="album_page_shuffle_button">Shuffle</string>
     <string name="album_page_tracks_count_and_duration">%1$d songs  •  %2$d minutes</string>
-    <string name="app_name">Tempus</string>
+    <string name="app_name">Tempus Sleep</string>
     <string name="artist_adapter_radio_station_starting">Searching…</string>
     <string name="artist_bottom_sheet_instant_mix">Instant mix</string>
     <string name="artist_bottom_sheet_shuffle">Shuffle</string>
@@ -628,4 +628,12 @@
 
     <string name="nav_drawer_index">Index</string>
 
+    <string name="sleep_timer_title">Sleep timer</string>
+    <string name="sleep_timer_start_button">Start</string>
+    <string name="sleep_timer_stop_button">Stop</string>
+    <string name="sleep_timer_cancel_button">Cancel</string>
+ <string name="sleep_timer_minutes_label">min</string>
+    <string name="sleep_timer_end_of_track">End of track</string>
+    <string name="sleep_timer_end_of_track_active">Sleep timer: will stop at end of current track</string>
+    <string name="sleep_timer_remaining">Sleep timer: %1$s remaining</string>
 </resources>

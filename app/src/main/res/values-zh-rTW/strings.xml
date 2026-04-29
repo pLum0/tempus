@@ -28,7 +28,7 @@
     <string name="album_page_release_dates_label">發行日期：%1$s（原版發行於 %2$s）</string>
     <string name="album_page_shuffle_button">隨機播放</string>
     <string name="album_page_tracks_count_and_duration">%1$d 首歌曲 • %2$d 分鐘</string>
-    <string name="app_name">Tempus</string>
+    <string name="app_name">Tempus Sleep</string>
     <string name="artist_adapter_radio_station_starting">正在搜尋...</string>
     <string name="artist_bottom_sheet_instant_mix">即時混聽</string>
     <string name="artist_bottom_sheet_shuffle">隨機播放</string>
@@ -545,4 +545,12 @@
     <string name="widget_placeholder_subtitle">開啟 Tempus</string>
     <string name="widget_time_duration_placeholder">0:00</string>
     <string name="widget_time_elapsed_placeholder">0:00</string>
+    <string name="sleep_timer_title">睡眠定時器</string>
+    <string name="sleep_timer_start_button">開始</string>
+    <string name="sleep_timer_stop_button">停止</string>
+    <string name="sleep_timer_cancel_button">取消</string>
+    <string name="sleep_timer_minutes_label">分鐘</string>
+    <string name="sleep_timer_end_of_track">目前曲目結束</string>
+    <string name="sleep_timer_end_of_track_active">睡眠定時器：將在目前曲目結束後停止</string>
+    <string name="sleep_timer_remaining">睡眠定時器：剩餘 %1$s</string>
 </resources>

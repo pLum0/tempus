@@ -80,6 +80,12 @@ object Preferences {
     private const val GITHUB_UPDATE_CHECK = "github_update_check"
     private const val CONTINUOUS_PLAY = "continuous_play"
     private const val LAST_INSTANT_MIX = "last_instant_mix"
+    private const val SLEEP_TIMER_ACTIVE = "sleep_timer_active"
+    private const val SLEEP_TIMER_REMAINING_MILLIS = "sleep_timer_remaining_millis"
+    private const val SLEEP_TIMER_END_OF_TRACK = "sleep_timer_end_of_track"
+    private const val SLEEP_TIMER_START_TIME = "sleep_timer_start_time"
+    private const val SLEEP_TIMER_DURATION_MINUTES = "sleep_timer_duration_minutes"
+    private const val SLEEP_TIMER_LAST_SELECTION = "sleep_timer_last_selection"
     private const val ALLOW_PLAYLIST_DUPLICATES = "allow_playlist_duplicates"
     private const val HOME_SORT_PLAYLISTS = "home_sort_playlists"
     private const val DEFAULT_HOME_SORT_PLAYLISTS_SORT_ORDER = Constants.PLAYLIST_ORDER_BY_RANDOM
@@ -854,3 +860,64 @@ object Preferences {
     }
 
 }
+
+    // --- Sleep Timer ---
+    @JvmStatic
+    fun isSleepTimerActive(): Boolean {
+        return App.getInstance().preferences.getBoolean(SLEEP_TIMER_ACTIVE, false)
+    }
+
+    @JvmStatic
+    fun setSleepTimerActive(active: Boolean) {
+        App.getInstance().preferences.edit().putBoolean(SLEEP_TIMER_ACTIVE, active).apply()
+    }
+
+    @JvmStatic
+    fun getSleepTimerRemainingMillis(): Long {
+        return App.getInstance().preferences.getLong(SLEEP_TIMER_REMAINING_MILLIS, 0L)
+    }
+
+    @JvmStatic
+    fun setSleepTimerRemainingMillis(millis: Long) {
+        App.getInstance().preferences.edit().putLong(SLEEP_TIMER_REMAINING_MILLIS, millis).apply()
+    }
+
+    @JvmStatic
+    fun isSleepTimerEndOfTrack(): Boolean {
+        return App.getInstance().preferences.getBoolean(SLEEP_TIMER_END_OF_TRACK, false)
+    }
+
+    @JvmStatic
+    fun setSleepTimerEndOfTrack(endOfTrack: Boolean) {
+        App.getInstance().preferences.edit().putBoolean(SLEEP_TIMER_END_OF_TRACK, endOfTrack).apply()
+    }
+
+    @JvmStatic
+    fun getSleepTimerStartTime(): Long {
+        return App.getInstance().preferences.getLong(SLEEP_TIMER_START_TIME, 0L)
+    }
+
+    @JvmStatic
+    fun setSleepTimerStartTime(time: Long) {
+        App.getInstance().preferences.edit().putLong(SLEEP_TIMER_START_TIME, time).apply()
+    }
+
+    @JvmStatic
+    fun getSleepTimerDurationMinutes(): Int {
+        return App.getInstance().preferences.getInt(SLEEP_TIMER_DURATION_MINUTES, 0)
+    }
+
+    @JvmStatic
+    fun setSleepTimerDurationMinutes(minutes: Int) {
+        App.getInstance().preferences.edit().putInt(SLEEP_TIMER_DURATION_MINUTES, minutes).apply()
+    }
+
+    @JvmStatic
+    fun getSleepTimerLastSelection(): Int {
+        return App.getInstance().preferences.getInt(SLEEP_TIMER_LAST_SELECTION, 0)
+    }
+
+    @JvmStatic
+    fun setSleepTimerLastSelection(selection: Int) {
+        App.getInstance().preferences.edit().putInt(SLEEP_TIMER_LAST_SELECTION, selection).apply()
+    }

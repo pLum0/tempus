@@ -62,6 +62,9 @@ open class BaseMediaService : MediaLibraryService() {
             "android.media3.session.demo.REPEAT_ALL"
         const val ACTION_BIND_EQUALIZER = "com.cappielloantonio.tempo.service.BIND_EQUALIZER"
         const val ACTION_EQUALIZER_UPDATED = "com.cappielloantonio.tempo.service.EQUALIZER_UPDATED"
+        const val ACTION_SLEEP_TIMER_START = "com.cappielloantonio.tempo.service.SLEEP_TIMER_START"
+        const val ACTION_SLEEP_TIMER_END_OF_TRACK = "com.cappielloantonio.tempo.service.SLEEP_TIMER_END_OF_TRACK"
+        const val ACTION_SLEEP_TIMER_CANCEL = "com.cappielloantonio.tempo.service.SLEEP_TIMER_CANCEL"
     }
 
     protected lateinit var exoplayer: ExoPlayer
@@ -90,6 +93,13 @@ open class BaseMediaService : MediaLibraryService() {
     }
 
     private val binder = LocalBinder()
+
+    // Sleep timer state
+    private var sleepCountDownTimer: android.os.CountDownTimer? = null
+    private var sleepEndOfTrackPending = false
+    private var sleepEndOfTrackSongId: String? = null
+    private val sleepTimerHandler = Handler(Looper.getMainLooper())
+    private var sleepFadeOutRunnable: Runnable? = null
 
     open fun playerInitHook() {
         initializeExoPlayer()
@@ -147,6 +157,7 @@ open class BaseMediaService : MediaLibraryService() {
             override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
                 Log.d(TAG, "onMediaItemTransition" + player.currentMediaItemIndex)
                 if (mediaItem == null) return
+                checkSleepTimerEndOfTrack(mediaItem)
                 ReplayGainUtil.applyGain(player, mediaItem)
 
                 // --- Add for AA : Constants.AA_START_INDEX if présent ---
@@ -449,6 +460,7 @@ open class BaseMediaService : MediaLibraryService() {
         initializeEqualizerManager()
         initializeNetworkListener()
         restorePlayerFromQueue(mediaLibrarySession.player)
+        registerSleepTimerReceiver()
     }
 
     override fun onGetSession(controllerInfo: ControllerInfo): MediaLibrarySession {
@@ -456,6 +468,8 @@ open class BaseMediaService : MediaLibraryService() {
     }
 
     override fun onDestroy() {
+        cancelSleepTimer()
+        try { unregisterReceiver(sleepTimerReceiver) } catch (_: Exception) {}
         releaseNetworkCallback()
         equalizerManager.release()
         ReplayGainUtil.release()
@@ -765,6 +779,111 @@ open class BaseMediaService : MediaLibraryService() {
 
     private fun getMediaSourceFactory(): MediaSource.Factory = DynamicMediaSourceFactory(this)
 
+    // --- Sleep Timer Logic ---
+
+    private val sleepTimerReceiver = object : android.content.BroadcastReceiver() {
+        override fun onReceive(context: android.content.Context, intent: android.content.Intent) {
+            when (intent.action) {
+                ACTION_SLEEP_TIMER_START -> {
+                    val minutes = intent.getIntExtra("duration_minutes", 0)
+                    if (minutes > 0) startSleepTimer(minutes)
+                }
+                ACTION_SLEEP_TIMER_END_OF_TRACK -> startSleepTimerEndOfTrack()
+                ACTION_SLEEP_TIMER_CANCEL -> cancelSleepTimer()
+            }
+        }
+    }
+
+    private fun registerSleepTimerReceiver() {
+        val filter = android.content.IntentFilter().apply {
+            addAction(ACTION_SLEEP_TIMER_START)
+            addAction(ACTION_SLEEP_TIMER_END_OF_TRACK)
+            addAction(ACTION_SLEEP_TIMER_CANCEL)
+        }
+        registerReceiver(sleepTimerReceiver, filter, android.content.Context.RECEIVER_NOT_EXPORTED)
+    }
+
+    private fun startSleepTimer(minutes: Int) {
+        cancelSleepTimer()
+        val durationMillis = minutes * 60_000L
+        Preferences.setSleepTimerActive(true)
+        Preferences.setSleepTimerRemainingMillis(durationMillis)
+        Preferences.setSleepTimerStartTime(System.currentTimeMillis())
+        Preferences.setSleepTimerDurationMinutes(minutes)
+
+        sleepCountDownTimer = object : android.os.CountDownTimer(durationMillis, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                Preferences.setSleepTimerRemainingMillis(millisUntilFinished)
+            }
+
+            override fun onFinish() {
+                Preferences.setSleepTimerRemainingMillis(0)
+                Preferences.setSleepTimerActive(false)
+                fadeOutAndPause()
+            }
+        }.start()
+    }
+
+    private fun startSleepTimerEndOfTrack() {
+        cancelSleepTimer()
+        sleepEndOfTrackPending = true
+        val currentItem = mediaLibrarySession.player.currentMediaItem
+        sleepEndOfTrackSongId = currentItem?.mediaId
+        Preferences.setSleepTimerActive(true)
+        Preferences.setSleepTimerEndOfTrack(true)
+        Preferences.setSleepTimerRemainingMillis(-1)
+    }
+
+    private fun cancelSleepTimer() {
+        sleepCountDownTimer?.cancel()
+        sleepCountDownTimer = null
+        sleepEndOfTrackPending = false
+        sleepEndOfTrackSongId = null
+        sleepFadeOutRunnable?.let { sleepTimerHandler.removeCallbacks(it) }
+        sleepFadeOutRunnable = null
+        Preferences.setSleepTimerActive(false)
+        Preferences.setSleepTimerRemainingMillis(0)
+        Preferences.setSleepTimerEndOfTrack(false)
+    }
+
+    fun checkSleepTimerEndOfTrack(mediaItem: android.media3.common.MediaItem?) {
+        if (!sleepEndOfTrackPending) return
+        val currentId = mediaItem?.mediaId
+        if (currentId != null && currentId != sleepEndOfTrackSongId) {
+            sleepEndOfTrackPending = false
+            sleepEndOfTrackSongId = null
+            Preferences.setSleepTimerActive(false)
+            Preferences.setSleepTimerEndOfTrack(false)
+            Preferences.setSleepTimerRemainingMillis(0)
+            mediaLibrarySession.player.pause()
+        }
+    }
+
+    private fun fadeOutAndPause() {
+        val player = mediaLibrarySession.player
+        if (!player.isPlaying) return
+
+        val steps = 20
+        val stepDuration = 150L // 3 seconds total fade
+        val volumeStep = 1.0f / steps
+        var currentStep = 0
+
+        sleepFadeOutRunnable = object : Runnable {
+            override fun run() {
+                currentStep++
+                val newVolume = 1.0f - (volumeStep * currentStep)
+                if (newVolume > 0f) {
+                    player.volume = newVolume
+                    sleepTimerHandler.postDelayed(this, stepDuration)
+                } else {
+                    player.pause()
+                    player.volume = 1.0f
+                    Preferences.setSleepTimerActive(false)
+                }
+            }
+        }
+        sleepTimerHandler.postDelayed(sleepFadeOutRunnable!!, stepDuration)
+    }
     @UnstableApi
     private class CustomMediaLibrarySessionCallback : MediaLibrarySession.Callback {
         private val shuffleCommands: List<CommandButton>

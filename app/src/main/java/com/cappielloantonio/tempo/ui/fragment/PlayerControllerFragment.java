@@ -48,6 +48,7 @@ import com.cappielloantonio.tempo.service.MediaService;
 import com.cappielloantonio.tempo.ui.activity.MainActivity;
 import com.cappielloantonio.tempo.ui.dialog.PlaybackSpeedDialog;
 import com.cappielloantonio.tempo.ui.dialog.RatingDialog;
+import com.cappielloantonio.tempo.ui.dialog.SleepTimerDialog;
 import com.cappielloantonio.tempo.ui.dialog.TrackInfoDialog;
 import com.cappielloantonio.tempo.ui.fragment.pager.PlayerControllerHorizontalPager;
 import com.cappielloantonio.tempo.util.AssetLinkUtil;
@@ -86,6 +87,7 @@ public class PlayerControllerFragment extends Fragment {
     private ImageButton playerTrackInfo;
     private LinearLayout ratingContainer;
     private ImageButton equalizerButton;
+    private ImageButton sleepTimerButton;
     private ChipGroup assetLinkChipGroup;
     private Chip playerSongLinkChip;
     private Chip playerAlbumLinkChip;
@@ -150,6 +152,7 @@ public class PlayerControllerFragment extends Fragment {
         playerQuickActionView = bind.getRoot().findViewById(R.id.player_quick_action_view);
         playerOpenQueueButton = bind.getRoot().findViewById(R.id.player_open_queue_button);
         playerTrackInfo = bind.getRoot().findViewById(R.id.player_info_track);
+        sleepTimerButton = bind.getRoot().findViewById(R.id.player_sleep_timer_button);
         songRatingBar =  bind.getRoot().findViewById(R.id.song_rating_bar);
         ratingContainer = bind.getRoot().findViewById(R.id.rating_container);
         equalizerButton = bind.getRoot().findViewById(R.id.player_open_equalizer_button);
@@ -482,6 +485,7 @@ public class PlayerControllerFragment extends Fragment {
 
     private void setMediaControllerUI(MediaBrowser mediaBrowser) {
         initPlaybackSpeedButton(mediaBrowser);
+        updateSleepTimerIcon();
 
         if (mediaBrowser.getMediaMetadata().extras != null) {
             switch (mediaBrowser.getMediaMetadata().extras.getString("type", Constants.MEDIA_TYPE_MUSIC)) {

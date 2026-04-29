@@ -50,7 +50,7 @@
     <string name="album_page_release_dates_label">Sorti le %1$s, initialement %2$s</string>
     <string name="album_page_shuffle_button">Mélanger</string>
     <string name="album_page_tracks_count_and_duration">%1$d titres  •  %2$d minutes</string>
-    <string name="app_name">Tempus</string>
+    <string name="app_name">Tempus Sleep</string>
     <string name="artist_adapter_radio_station_starting">Recherche…</string>
     <string name="artist_bottom_sheet_instant_mix">Mix instantané</string>
     <string name="artist_bottom_sheet_shuffle">Mélanger</string>
@@ -609,4 +609,12 @@
     <string name="search_all_songs_loading">Récupération de tous les titres…</string>
     <string name="search_all_songs">tous les titres de %1$s</string>
     <string name="search_all_songs_play">Jouer %1$s</string>
+    <string name="sleep_timer_title">Minuteur de sommeil</string>
+    <string name="sleep_timer_start_button">Démarrer</string>
+    <string name="sleep_timer_stop_button">Arrêter</string>
+    <string name="sleep_timer_cancel_button">Annuler</string>
+    <string name="sleep_timer_minutes_label">min</string>
+    <string name="sleep_timer_end_of_track">Fin de la piste</string>
+    <string name="sleep_timer_end_of_track_active">Minuteur : s\'arrêtera à la fin de la piste actuelle</string>
+    <string name="sleep_timer_remaining">Minuteur : %1$s restant</string>
 </resources>

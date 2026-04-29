@@ -29,7 +29,7 @@
     <string name="album_page_release_dates_label">Publicació: %1$s, originalment: %2$s</string>
     <string name="album_page_shuffle_button">Reprodueix aleatòriament</string>
     <string name="album_page_tracks_count_and_duration">%1$d cançons  •  %2$d minuts</string>
-    <string name="app_name">Tempus</string>
+    <string name="app_name">Tempus Sleep</string>
     <string name="artist_adapter_radio_station_starting">S\'està cercant...</string>
     <string name="artist_bottom_sheet_instant_mix">Mescla instantània</string>
     <string name="artist_bottom_sheet_shuffle">Reprodueix aleatòriament</string>
@@ -532,4 +532,12 @@
     <string name="settings_album_detail_summary">Si s\'habilita, es mostren els detalls de l\'àlbum, com el gènere i el nombre de cançons, a la pàgina de l\'àlbum.</string>
     <string name="settings_artist_sort_by_album_count">Ordena els artistes per nombre d\'àlbums</string>
     <string name="settings_artist_sort_by_album_count_summary">Si s\'habilita, ordena els artistes per nombre d\'àlbums. Si no, s\'ordenen per nom.</string>
+    <string name="sleep_timer_title">Temporitzador de son</string>
+    <string name="sleep_timer_start_button">Iniciar</string>
+    <string name="sleep_timer_stop_button">Aturar</string>
+    <string name="sleep_timer_cancel_button">Cancel·lar</string>
+    <string name="sleep_timer_minutes_label">min</string>
+    <string name="sleep_timer_end_of_track">Final de la cançó</string>
+    <string name="sleep_timer_end_of_track_active">Temporitzador: s\'aturarà al final de la cançó actual</string>
+    <string name="sleep_timer_remaining">Temporitzador: %1$s restant</string>
 </resources>

@@ -29,7 +29,7 @@
     <string name="album_page_release_dates_label">Lansat pe %1$s, inițial %2$s</string>
     <string name="album_page_shuffle_button">Amestecare</string>
     <string name="album_page_tracks_count_and_duration">%1$d cântece  •  %2$d minute</string>
-    <string name="app_name">Tempus</string>
+    <string name="app_name">Tempus Sleep</string>
     <string name="artist_adapter_radio_station_starting">Se caută…</string>
     <string name="artist_bottom_sheet_instant_mix">Mix instant</string>
     <string name="artist_bottom_sheet_shuffle">Amestecare</string>
@@ -552,4 +552,12 @@
 
     <string name="search_sort_title">Sortaţi căutările recente cronologic</string>
     <string name="search_sort_summary">Dacă este activat, sortează căutările cronologic. Sortează după nume dacă este dezactivat.</string>
+    <string name="sleep_timer_title">Cronometru de adormire</string>
+    <string name="sleep_timer_start_button">Pornire</string>
+    <string name="sleep_timer_stop_button">Oprire</string>
+    <string name="sleep_timer_cancel_button">Anulare</string>
+    <string name="sleep_timer_minutes_label">min</string>
+    <string name="sleep_timer_end_of_track">Sfârșitul piesei</string>
+    <string name="sleep_timer_end_of_track_active">Cronometru: se va opri la sfârșitul piesei curente</string>
+    <string name="sleep_timer_remaining">Cronometru: %1$s rămas</string>
 </resources>

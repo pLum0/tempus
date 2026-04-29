@@ -46,7 +46,7 @@
     <string name="album_page_release_dates_label">Дата релиза: %1$s, оригинал %2$s</string>
     <string name="album_page_shuffle_button">Перемешать</string>
     <string name="album_page_tracks_count_and_duration">%1$d треков • %2$d минут(ы)</string>
-    <string name="app_name">Tempus</string>
+    <string name="app_name">Tempus Sleep</string>
     <string name="artist_adapter_radio_station_starting">Поиск…</string>
     <string name="artist_bottom_sheet_instant_mix">Мгновенный микс</string>
     <string name="artist_bottom_sheet_shuffle">Перемешать</string>
@@ -603,4 +603,12 @@
 
     <string name="search_sort_title">Сортировать недавние поиски по времени</string>
     <string name="search_sort_summary">Если включено, поиски сортируются по времени. Если отключено - по имени.</string>
+    <string name="sleep_timer_title">Таймер сна</string>
+    <string name="sleep_timer_start_button">Запуск</string>
+    <string name="sleep_timer_stop_button">Остановить</string>
+    <string name="sleep_timer_cancel_button">Отмена</string>
+    <string name="sleep_timer_minutes_label">мин</string>
+    <string name="sleep_timer_end_of_track">Конец трека</string>
+    <string name="sleep_timer_end_of_track_active">Таймер: остановится в конце текущего трека</string>
+    <string name="sleep_timer_remaining">Таймер: осталось %1$s</string>
 </resources>

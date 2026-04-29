@@ -25,7 +25,7 @@
     <string name="album_page_extra_info_button">Sugestões semelhantes</string>
     <string name="album_page_play_button">Reproduzir</string>
     <string name="album_page_shuffle_button">Aleatório</string>
-    <string name="app_name">Tempus</string>
+    <string name="app_name">Tempus Sleep</string>
     <string name="artist_adapter_radio_station_starting">Procurando…</string>
     <string name="artist_bottom_sheet_instant_mix">Mixagem instantânea</string>
     <string name="artist_bottom_sheet_shuffle">Aleatório</string>
@@ -366,4 +366,12 @@
     <string name="undraw_page">unDraw</string>
     <string name="undraw_thanks">Um agradecimento especial ao unDraw, sem cujas ilustrações não poderíamos ter deixado esta aplicação tão bonita.</string>
     <string name="undraw_url">https://undraw.co/</string>
+    <string name="sleep_timer_title">Temporizador de sono</string>
+    <string name="sleep_timer_start_button">Iniciar</string>
+    <string name="sleep_timer_stop_button">Parar</string>
+    <string name="sleep_timer_cancel_button">Cancelar</string>
+    <string name="sleep_timer_minutes_label">min</string>
+    <string name="sleep_timer_end_of_track">Fim da faixa</string>
+    <string name="sleep_timer_end_of_track_active">Temporizador: parará no final da faixa atual</string>
+    <string name="sleep_timer_remaining">Temporizador: %1$s restante</string>
 </resources>
