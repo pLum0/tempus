@@ -744,7 +744,6 @@ public class PlayerControllerFragment extends Fragment {
         bindMediaService();
     }
 
-    @Override
     private void updateSleepTimerIcon() {
         if (sleepTimerButton != null) {
             boolean active = Preferences.isSleepTimerActive();
@@ -752,6 +751,7 @@ public class PlayerControllerFragment extends Fragment {
         }
     }
 
+    @Override
     public void onPause() {
         super.onPause();
         if (isServiceBound) {
