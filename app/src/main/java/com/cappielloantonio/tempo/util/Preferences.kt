@@ -859,7 +859,7 @@ object Preferences {
         App.getInstance().preferences.edit().putBoolean(AA_SHUFFLE_GENRE_SONGS, enabled).apply()
     }
 
-}
+
 
     // --- Sleep Timer ---
     @JvmStatic
@@ -921,3 +921,4 @@ object Preferences {
     fun setSleepTimerLastSelection(selection: Int) {
         App.getInstance().preferences.edit().putInt(SLEEP_TIMER_LAST_SELECTION, selection).apply()
     }
+}

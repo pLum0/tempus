@@ -846,7 +846,7 @@ open class BaseMediaService : MediaLibraryService() {
         Preferences.setSleepTimerEndOfTrack(false)
     }
 
-    fun checkSleepTimerEndOfTrack(mediaItem: android.media3.common.MediaItem?) {
+    fun checkSleepTimerEndOfTrack(mediaItem: MediaItem?) {
         if (!sleepEndOfTrackPending) return
         val currentId = mediaItem?.mediaId
         if (currentId != null && currentId != sleepEndOfTrackSongId) {
