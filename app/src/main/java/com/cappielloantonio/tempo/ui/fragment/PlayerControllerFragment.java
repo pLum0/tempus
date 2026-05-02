@@ -747,6 +747,7 @@ public class PlayerControllerFragment extends Fragment {
     public void onResume() {
         super.onResume();
         bindMediaService();
+        updateSleepTimerIcon();
     }
 
     private void updateSleepTimerIcon() {
