@@ -177,6 +177,9 @@ public class PlayerControllerFragment extends Fragment {
             SleepTimerDialog dialog = new SleepTimerDialog();
             dialog.show(requireActivity().getSupportFragmentManager(), "SleepTimerDialog");
         });
+
+        requireActivity().getSupportFragmentManager().setFragmentResultListener(
+                "sleep_timer_update", getViewLifecycleOwner(), (key, bundle) -> updateSleepTimerIcon());
     }
 
     private void initializeBrowser() {
@@ -747,7 +750,6 @@ public class PlayerControllerFragment extends Fragment {
     public void onResume() {
         super.onResume();
         bindMediaService();
-        updateSleepTimerIcon();
     }
 
     private void updateSleepTimerIcon() {

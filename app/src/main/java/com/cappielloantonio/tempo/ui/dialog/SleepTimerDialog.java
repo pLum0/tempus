@@ -151,6 +151,7 @@ public class SleepTimerDialog extends DialogFragment {
         Preferences.setSleepTimerEndOfTrack(false);
         Preferences.setSleepTimerStartTime(System.currentTimeMillis());
         Preferences.setSleepTimerDurationMinutes(minutes);
+        notifyParent();
 
         requireActivity().sendBroadcast(
                 new Intent(BaseMediaService.ACTION_SLEEP_TIMER_START)
@@ -163,6 +164,7 @@ public class SleepTimerDialog extends DialogFragment {
         Preferences.setSleepTimerActive(true);
         Preferences.setSleepTimerRemainingMillis(-1);
         Preferences.setSleepTimerEndOfTrack(true);
+        notifyParent();
 
         requireActivity().sendBroadcast(
                 new Intent(BaseMediaService.ACTION_SLEEP_TIMER_END_OF_TRACK)
@@ -174,11 +176,16 @@ public class SleepTimerDialog extends DialogFragment {
         Preferences.setSleepTimerActive(false);
         Preferences.setSleepTimerRemainingMillis(0);
         Preferences.setSleepTimerEndOfTrack(false);
+        notifyParent();
 
         requireActivity().sendBroadcast(
                 new Intent(BaseMediaService.ACTION_SLEEP_TIMER_CANCEL)
                         .setPackage(requireActivity().getPackageName())
         );
+    }
+
+    private void notifyParent() {
+        requireActivity().getSupportFragmentManager().setFragmentResult("sleep_timer_update", new android.os.Bundle());
     }
 
     @Override
