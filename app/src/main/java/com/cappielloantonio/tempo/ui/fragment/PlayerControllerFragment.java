@@ -172,6 +172,11 @@ public class PlayerControllerFragment extends Fragment {
                 playerBottomSheetFragment.goToQueuePage();
             }
         });
+
+        sleepTimerButton.setOnClickListener(view -> {
+            SleepTimerDialog dialog = new SleepTimerDialog();
+            dialog.show(requireActivity().getSupportFragmentManager(), "SleepTimerDialog");
+        });
     }
 
     private void initializeBrowser() {
