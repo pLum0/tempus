@@ -548,7 +548,7 @@
     <string name="sleep_timer_title">睡眠定时器</string>
     <string name="sleep_timer_start_button">开始</string>
     <string name="sleep_timer_stop_button">停止</string>
-    <string name="sleep_timer_cancel_button">取消</string>
+    <string name="sleep_timer_close_button">关闭</string>
     <string name="sleep_timer_minutes_label">分钟</string>
     <string name="sleep_timer_end_of_track">当前曲目结束</string>
     <string name="sleep_timer_end_of_track_active">睡眠定时器：将在当前曲目结束后停止</string>

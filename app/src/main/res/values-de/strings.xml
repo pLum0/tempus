@@ -612,7 +612,7 @@
     <string name="sleep_timer_title">Sleep-Timer</string>
     <string name="sleep_timer_start_button">Start</string>
     <string name="sleep_timer_stop_button">Stop</string>
-    <string name="sleep_timer_cancel_button">Abbrechen</string>
+    <string name="sleep_timer_close_button">Schließen</string>
  <string name="sleep_timer_minutes_label">Min</string>
     <string name="sleep_timer_end_of_track">Ende des Titels</string>
     <string name="sleep_timer_end_of_track_active">Sleep-Timer: Stoppt am Ende des aktuellen Titels</string>

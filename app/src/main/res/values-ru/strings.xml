@@ -606,7 +606,7 @@
     <string name="sleep_timer_title">Таймер сна</string>
     <string name="sleep_timer_start_button">Запуск</string>
     <string name="sleep_timer_stop_button">Остановить</string>
-    <string name="sleep_timer_cancel_button">Отмена</string>
+    <string name="sleep_timer_close_button">Закрыть</string>
     <string name="sleep_timer_minutes_label">мин</string>
     <string name="sleep_timer_end_of_track">Конец трека</string>
     <string name="sleep_timer_end_of_track_active">Таймер: остановится в конце текущего трека</string>

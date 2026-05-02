@@ -539,7 +539,7 @@
     <string name="sleep_timer_title">Timer di sospensione</string>
     <string name="sleep_timer_start_button">Avvia</string>
     <string name="sleep_timer_stop_button">Ferma</string>
-    <string name="sleep_timer_cancel_button">Annulla</string>
+    <string name="sleep_timer_close_button">Chiudi</string>
     <string name="sleep_timer_minutes_label">min</string>
     <string name="sleep_timer_end_of_track">Fine del brano</string>
     <string name="sleep_timer_end_of_track_active">Timer: si fermerà alla fine del brano corrente</string>

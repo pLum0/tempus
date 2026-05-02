@@ -612,7 +612,7 @@
     <string name="sleep_timer_title">Minuteur de sommeil</string>
     <string name="sleep_timer_start_button">Démarrer</string>
     <string name="sleep_timer_stop_button">Arrêter</string>
-    <string name="sleep_timer_cancel_button">Annuler</string>
+    <string name="sleep_timer_close_button">Fermer</string>
     <string name="sleep_timer_minutes_label">min</string>
     <string name="sleep_timer_end_of_track">Fin de la piste</string>
     <string name="sleep_timer_end_of_track_active">Minuteur : s\'arrêtera à la fin de la piste actuelle</string>

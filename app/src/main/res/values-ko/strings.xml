@@ -425,7 +425,7 @@
     <string name="sleep_timer_title">수면 타이머</string>
     <string name="sleep_timer_start_button">시작</string>
     <string name="sleep_timer_stop_button">정지</string>
-    <string name="sleep_timer_cancel_button">취소</string>
+    <string name="sleep_timer_close_button">닫기</string>
     <string name="sleep_timer_minutes_label">분</string>
     <string name="sleep_timer_end_of_track">현재 곡 끝</string>
     <string name="sleep_timer_end_of_track_active">수면 타이머: 현재 곡이 끝나면 정지합니다</string>

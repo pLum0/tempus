@@ -535,7 +535,7 @@
     <string name="sleep_timer_title">Temporitzador de son</string>
     <string name="sleep_timer_start_button">Iniciar</string>
     <string name="sleep_timer_stop_button">Aturar</string>
-    <string name="sleep_timer_cancel_button">Cancel·lar</string>
+    <string name="sleep_timer_close_button">Tancar</string>
     <string name="sleep_timer_minutes_label">min</string>
     <string name="sleep_timer_end_of_track">Final de la cançó</string>
     <string name="sleep_timer_end_of_track_active">Temporitzador: s\'aturarà al final de la cançó actual</string>

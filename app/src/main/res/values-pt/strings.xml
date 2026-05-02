@@ -369,7 +369,7 @@
     <string name="sleep_timer_title">Temporizador de sono</string>
     <string name="sleep_timer_start_button">Iniciar</string>
     <string name="sleep_timer_stop_button">Parar</string>
-    <string name="sleep_timer_cancel_button">Cancelar</string>
+    <string name="sleep_timer_close_button">Fechar</string>
     <string name="sleep_timer_minutes_label">min</string>
     <string name="sleep_timer_end_of_track">Fim da faixa</string>
     <string name="sleep_timer_end_of_track_active">Temporizador: parará no final da faixa atual</string>

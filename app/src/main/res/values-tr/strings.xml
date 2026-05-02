@@ -454,7 +454,7 @@
     <string name="sleep_timer_title">Uyku zamanlayıcısı</string>
     <string name="sleep_timer_start_button">Başlat</string>
     <string name="sleep_timer_stop_button">Durdur</string>
-    <string name="sleep_timer_cancel_button">İptal</string>
+    <string name="sleep_timer_close_button">Kapat</string>
     <string name="sleep_timer_minutes_label">dk</string>
     <string name="sleep_timer_end_of_track">Şarkı sonu</string>
     <string name="sleep_timer_end_of_track_active">Zamanlayıcı: mevcut şarkının sonunda duracak</string>

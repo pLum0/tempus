@@ -576,7 +576,7 @@
     <string name="sleep_timer_title">Temporizador de sueño</string>
     <string name="sleep_timer_start_button">Iniciar</string>
     <string name="sleep_timer_stop_button">Detener</string>
-    <string name="sleep_timer_cancel_button">Cancelar</string>
+    <string name="sleep_timer_close_button">Cerrar</string>
     <string name="sleep_timer_minutes_label">min</string>
     <string name="sleep_timer_end_of_track">Fin de la canción</string>
     <string name="sleep_timer_end_of_track_active">Temporizador: se detendrá al final de la canción actual</string>

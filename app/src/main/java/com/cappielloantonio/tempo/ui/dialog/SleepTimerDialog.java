@@ -27,6 +27,7 @@ public class SleepTimerDialog extends DialogFragment {
     private Handler updateHandler;
     private Runnable updateRunnable;
 
+    // "End of track" is index 0, then minute options
     private final String[] minuteValues = {"5", "10", "15", "30", "45", "60", "90", "120"};
 
     @NonNull
@@ -60,11 +61,12 @@ public class SleepTimerDialog extends DialogFragment {
     }
 
     private void setupPicker() {
+        // "End of track" at index 0, then minute options
         String[] displayValues = new String[minuteValues.length + 1];
+        displayValues[0] = getString(R.string.sleep_timer_end_of_track);
         for (int i = 0; i < minuteValues.length; i++) {
-            displayValues[i] = minuteValues[i] + " min";
+            displayValues[i + 1] = minuteValues[i] + " min";
         }
-        displayValues[minuteValues.length] = getString(R.string.sleep_timer_end_of_track);
 
         sleepTimerMinutesPicker.setMinValue(0);
         sleepTimerMinutesPicker.setMaxValue(displayValues.length - 1);
@@ -83,15 +85,16 @@ public class SleepTimerDialog extends DialogFragment {
 
         builder.setPositiveButton(R.string.sleep_timer_start_button, (dialog, id) -> {
             int selectedIndex = sleepTimerMinutesPicker.getValue();
-            if (selectedIndex < minuteValues.length) {
-                int minutes = Integer.parseInt(minuteValues[selectedIndex]);
-                startSleepTimer(minutes);
-            } else {
+            if (selectedIndex == 0) {
+                // "End of track" is index 0
                 startSleepTimerEndOfTrack();
+            } else {
+                int minutes = Integer.parseInt(minuteValues[selectedIndex - 1]);
+                startSleepTimer(minutes);
             }
             Preferences.setSleepTimerLastSelection(selectedIndex);
         });
-        builder.setNegativeButton(R.string.sleep_timer_cancel_button, (dialog, id) -> dialog.cancel());
+        builder.setNegativeButton(R.string.sleep_timer_close_button, (dialog, id) -> dialog.cancel());
     }
 
     private void showActiveTimerUI(MaterialAlertDialogBuilder builder, long remainingMillis) {
@@ -102,7 +105,7 @@ public class SleepTimerDialog extends DialogFragment {
         sleepTimerStatusLabel.setText(getString(R.string.sleep_timer_remaining, remainingText));
 
         builder.setPositiveButton(R.string.sleep_timer_stop_button, (dialog, id) -> cancelSleepTimer());
-        builder.setNegativeButton(R.string.sleep_timer_cancel_button, (dialog, id) -> dialog.cancel());
+        builder.setNegativeButton(R.string.sleep_timer_close_button, (dialog, id) -> dialog.cancel());
 
         startRemainingTimeUpdates();
     }
@@ -113,7 +116,7 @@ public class SleepTimerDialog extends DialogFragment {
         sleepTimerStatusLabel.setText(R.string.sleep_timer_end_of_track_active);
 
         builder.setPositiveButton(R.string.sleep_timer_stop_button, (dialog, id) -> cancelSleepTimer());
-        builder.setNegativeButton(R.string.sleep_timer_cancel_button, (dialog, id) -> dialog.cancel());
+        builder.setNegativeButton(R.string.sleep_timer_close_button, (dialog, id) -> dialog.cancel());
     }
 
     private void startRemainingTimeUpdates() {

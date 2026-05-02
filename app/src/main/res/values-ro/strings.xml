@@ -555,7 +555,7 @@
     <string name="sleep_timer_title">Cronometru de adormire</string>
     <string name="sleep_timer_start_button">Pornire</string>
     <string name="sleep_timer_stop_button">Oprire</string>
-    <string name="sleep_timer_cancel_button">Anulare</string>
+    <string name="sleep_timer_close_button">Închide</string>
     <string name="sleep_timer_minutes_label">min</string>
     <string name="sleep_timer_end_of_track">Sfârșitul piesei</string>
     <string name="sleep_timer_end_of_track_active">Cronometru: se va opri la sfârșitul piesei curente</string>

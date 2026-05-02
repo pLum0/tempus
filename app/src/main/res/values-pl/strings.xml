@@ -609,7 +609,7 @@
     <string name="sleep_timer_title">Timer uśpienia</string>
     <string name="sleep_timer_start_button">Rozpocznij</string>
     <string name="sleep_timer_stop_button">Zatrzymaj</string>
-    <string name="sleep_timer_cancel_button">Anuluj</string>
+    <string name="sleep_timer_close_button">Zamknij</string>
     <string name="sleep_timer_minutes_label">min</string>
     <string name="sleep_timer_end_of_track">Koniec utworu</string>
     <string name="sleep_timer_end_of_track_active">Timer: zatrzyma się po zakończeniu bieżącego utworu</string>

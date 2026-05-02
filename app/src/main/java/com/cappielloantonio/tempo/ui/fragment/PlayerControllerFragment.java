@@ -752,7 +752,14 @@ public class PlayerControllerFragment extends Fragment {
     private void updateSleepTimerIcon() {
         if (sleepTimerButton != null) {
             boolean active = Preferences.isSleepTimerActive();
-            sleepTimerButton.setImageResource(active ? R.drawable.ic_sleep_timer_active : R.drawable.ic_sleep_timer);
+            if (active) {
+                sleepTimerButton.setAlpha(1.0f);
+                sleepTimerButton.setImageTintList(android.content.res.ColorStateList.valueOf(
+                        getResources().getColor(android.R.color.white, null)));
+            } else {
+                sleepTimerButton.setAlpha(0.5f);
+                sleepTimerButton.setImageTintList(null);
+            }
         }
     }
 
