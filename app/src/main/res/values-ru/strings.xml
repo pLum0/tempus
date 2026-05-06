@@ -46,7 +46,7 @@
     <string name="album_page_release_dates_label">Дата релиза: %1$s, оригинал %2$s</string>
     <string name="album_page_shuffle_button">Перемешать</string>
     <string name="album_page_tracks_count_and_duration">%1$d треков • %2$d минут(ы)</string>
-    <string name="app_name">Tempus Sleep</string>
+    <string name="app_name">Tempus</string>
     <string name="artist_adapter_radio_station_starting">Поиск…</string>
     <string name="artist_bottom_sheet_instant_mix">Мгновенный микс</string>
     <string name="artist_bottom_sheet_shuffle">Перемешать</string>

@@ -461,6 +461,7 @@ open class BaseMediaService : MediaLibraryService() {
         initializeNetworkListener()
         restorePlayerFromQueue(mediaLibrarySession.player)
         registerSleepTimerReceiver()
+        restoreSleepTimerState()
     }
 
     override fun onGetSession(controllerInfo: ControllerInfo): MediaLibrarySession {
@@ -803,6 +804,48 @@ open class BaseMediaService : MediaLibraryService() {
         registerReceiver(sleepTimerReceiver, filter, android.content.Context.RECEIVER_NOT_EXPORTED)
     }
 
+    private fun restoreSleepTimerState() {
+        if (!Preferences.isSleepTimerActive()) return
+
+        if (Preferences.isSleepTimerEndOfTrack()) {
+            sleepEndOfTrackPending = true
+            val currentItem = mediaLibrarySession.player.currentMediaItem
+            sleepEndOfTrackSongId = currentItem?.mediaId
+            return
+        }
+
+        val startTime = Preferences.getSleepTimerStartTime()
+        val durationMinutes = Preferences.getSleepTimerDurationMinutes()
+        if (startTime <= 0 || durationMinutes <= 0) {
+            cancelSleepTimer()
+            return
+        }
+
+        val durationMillis = durationMinutes * 60_000L
+        val elapsed = System.currentTimeMillis() - startTime
+        val remaining = durationMillis - elapsed
+
+        if (remaining <= 0) {
+            cancelSleepTimer()
+            fadeOutAndPause()
+            return
+        }
+
+        Preferences.setSleepTimerRemainingMillis(remaining)
+
+        sleepCountDownTimer = object : android.os.CountDownTimer(remaining, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                Preferences.setSleepTimerRemainingMillis(millisUntilFinished)
+            }
+
+            override fun onFinish() {
+                Preferences.setSleepTimerRemainingMillis(0)
+                Preferences.setSleepTimerActive(false)
+                fadeOutAndPause()
+            }
+        }.start()
+    }
+
     private fun startSleepTimer(minutes: Int) {
         cancelSleepTimer()
         val durationMillis = minutes * 60_000L
@@ -846,7 +889,7 @@ open class BaseMediaService : MediaLibraryService() {
         Preferences.setSleepTimerEndOfTrack(false)
     }
 
-    fun checkSleepTimerEndOfTrack(mediaItem: MediaItem?) {
+    private fun checkSleepTimerEndOfTrack(mediaItem: MediaItem?) {
         if (!sleepEndOfTrackPending) return
         val currentId = mediaItem?.mediaId
         if (currentId != null && currentId != sleepEndOfTrackSongId) {

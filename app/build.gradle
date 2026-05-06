@@ -47,23 +47,14 @@ android {
     productFlavors {
         tempus {
             dimension = "default"
-            applicationId 'com.eddyizm.tempus.sleeptimer'
+            applicationId 'com.eddyizm.tempus'
         }
 
         degoogled {
             dimension = "default"
-            applicationId "com.eddyizm.degoogled.tempus.sleeptimer"
+            applicationId "com.eddyizm.degoogled.tempus"
         }
 
-    }
-
-    signingConfigs {
-        debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'debug'
-            keyPassword 'android'
-        }
     }
 
     buildTypes {
@@ -77,7 +68,6 @@ android {
         debug {
             applicationIdSuffix ".debug"
             debuggable true
-            signingConfig signingConfigs.debug
         }
     }
 
