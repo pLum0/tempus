@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,7 @@ import com.eddyizm.tempus.equalizer.ParametricProfile;
 import com.eddyizm.tempus.service.DownloaderService;
 import com.eddyizm.tempus.service.MediaService;
 import com.eddyizm.tempus.ui.activity.MainActivity;
+import com.eddyizm.tempus.ui.dialog.AppShortcutDialogs;
 import com.eddyizm.tempus.ui.dialog.DeleteDownloadStorageDialog;
 import com.eddyizm.tempus.ui.dialog.DownloadStorageDialog;
 import com.eddyizm.tempus.ui.dialog.StarredAlbumSyncDialog;
@@ -61,6 +63,7 @@ import com.eddyizm.tempus.ui.dialog.StarredArtistSyncDialog;
 import com.eddyizm.tempus.ui.dialog.StarredSyncDialog;
 import com.eddyizm.tempus.ui.dialog.StreamingCacheStorageDialog;
 import com.eddyizm.tempus.ui.login.LoginActivity;
+import com.eddyizm.tempus.util.AppShortcuts;
 import com.eddyizm.tempus.util.ClickablePreferenceCategory;
 import com.eddyizm.tempus.util.DownloadUtil;
 import com.eddyizm.tempus.subsonic.models.MusicFolder;
@@ -203,6 +206,8 @@ public class SettingsContainerFragment extends PreferenceFragmentCompat {
         actionAutoDownloadLyrics();
         actionMiniPlayerHeart();
         actionLanRemote();
+        actionShortcutsRecentPlaylists();
+        actionShortcutsManage();
 
         bindMediaService();
         actionBuiltinEqualizer();
@@ -917,6 +922,31 @@ public class SettingsContainerFragment extends PreferenceFragmentCompat {
                 findPreference("scan_library").setSummary(getString(R.string.settings_scan_result, count));
                 if (isScanning) getScanStatus();
             }
+        });
+    }
+
+    private void actionShortcutsRecentPlaylists() {
+        Preference preference = findPreference(Preferences.SHORTCUTS_RECENT_PLAYLISTS);
+        if (preference == null) return;
+        preference.setOnPreferenceChangeListener((pref, newValue) -> {
+            if (newValue instanceof Boolean) AppShortcuts.publish(requireContext(), (Boolean) newValue);
+            return true;
+        });
+    }
+
+    private void actionShortcutsManage() {
+        Preference preference = findPreference("shortcuts_manage");
+        if (preference == null) return;
+        Runnable showPicks = () -> {
+            List<String> names = new ArrayList<>();
+            for (Preferences.ShortcutItem item : Preferences.getFixedShortcuts()) names.add(item.getName());
+            preference.setSummary(names.isEmpty()
+                    ? getString(R.string.settings_shortcuts_manage_empty) : TextUtils.join(", ", names));
+        };
+        showPicks.run();
+        preference.setOnPreferenceClickListener(pref -> {
+            AppShortcutDialogs.manage(requireActivity(), showPicks);
+            return true;
         });
     }
 
